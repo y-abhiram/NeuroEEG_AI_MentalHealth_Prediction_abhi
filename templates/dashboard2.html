@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+            text-align: center;
+            padding: 40px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .option {
+            background-color: #ffffff;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            padding: 30px 40px;
+            width: 250px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .option h3 {
+            margin-bottom: 20px;
+        }
+        .option button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .option button:disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, {{ session['personal']['name'] }}</h1>
+    <div class="options">
+        <div class="option">
+            <h3>Behavioral Analysis</h3>
+            <a href="{{ url_for('run_behavioral') }}"><button>Start</button></a>
+        </div>
+        <div class="option">
+            <h3>Questionnaire</h3>
+            <!-- Redirects to block selection page instead of directly starting the form 
+                  <a href="{{ url_for('select_question_block') }}"><button>Start</button></a>         -->
+
+           
+            <a href="{{ url_for('questionnaire') }}"><button>Start</button></a>
+        </div>
+        <div class="option">
+            <h3>EEG Analysis</h3>
+            <button disabled>Coming Soon</button>
+        </div>
+        <div class="option">
+            <h3>Run All</h3>
+            <a href="{{ url_for('run_all') }}"><button>Start</button></a>
+        </div>
+    </div>
+</body>
+</html>
+
